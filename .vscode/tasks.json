@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start API",
+            "type": "dotenv",
+            "targetTasks": "API dotnet run",
+            "file": "${input:dotEnvFilePath}"
+        },
+        {
+            "label": "API dotnet run",
+            "detail": "Helper task--use 'Start API' task to ensure environment is set up correctly",
+            "type": "shell",
+            "command": "dotnet run",
+            "options": {
+                "cwd": "${workspaceFolder}/src/api/"
+            },
+            "presentation": {
+                "panel": "dedicated",
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build API",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/api/Api.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Watch API",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/src/api/Api.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "dotEnvFilePath",
+            "type": "command",
+            "command": "azure-dev.commands.getDotEnvFilePath"
+        }
+    ]
+}
