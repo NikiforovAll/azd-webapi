@@ -22,8 +22,7 @@ You will be prompted for the following information:
 When `azd up` is complete it will output the following URLs:
 
 - Azure Portal link to view resources
-- ToDo Web application frontend
-- ToDo API application
+- WeatherForecast API
 
 Click the web application URL to launch the ToDo app. Create a new collection and add some items. This will create monitoring activity in the application that you will be able to see later when you run `azd monitor`.
 
